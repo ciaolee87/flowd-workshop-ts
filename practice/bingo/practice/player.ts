@@ -1,4 +1,4 @@
-import {getInputValue} from "../../utils/stdio/stdio";
+import {getInputValue} from "../../../utils/stdio/stdio";
 import {BingoOwner} from "./bingoOwner";
 import {BingoValue} from "./bingoValue";
 
