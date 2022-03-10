@@ -10,6 +10,8 @@
     "typescript": "4.6.2"
   },
   "scripts": {
-    "loop": "ts-node ./utils/stdio/practice.ts"
+    "loop": "ts-node ./utils/stdio/practice.ts",
+    "stdio": "ts-node ./utils/stdio/stdio.ts",
+    "promise": "ts-node ./grammar/promise/promise.ts"
   }
 }

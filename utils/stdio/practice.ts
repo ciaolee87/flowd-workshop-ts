@@ -55,6 +55,8 @@ const main = async () => {
 }
 
 
-main().then().catch(reason => {
-    console.log("main error :" + reason);
-});
+main()
+    .then()
+    .catch(reason => {
+        console.log("main error :" + reason);
+    });
