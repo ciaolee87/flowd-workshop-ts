@@ -151,4 +151,16 @@ const secondExcutePromise = () => {
     secondDayPromise(secondMakeGoPromise(secondMakeDoPromise(1))).catch((e) => console.log(e));
 }
 
-secondExcutePromise();
+// secondExcutePromise();
+
+
+// async - await
+const secondExcuteAwait = async (): Promise<void> => {
+    let firstDay = 1;
+    while (true) {
+        const result = await secondDayPromise(secondMakeGoPromise(secondMakeDoPromise(firstDay)));
+        firstDay += 1;
+    }
+};
+
+secondExcuteAwait().then().catch((e) => console.log(e));
