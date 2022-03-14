@@ -36,7 +36,7 @@
 // 그룹화 + 자동화(= !!!똑같은 작업!!! 을 따로 정의해서 그것만 불러서 쓴다)
 
 
-// 방금전에 이마트 직원 (물건 가져다 놓은 일) 을 하는걸 코드
+// 이마트 직원 (물건 가져다 놓은 일) 을 하는걸 코드
 // 워커가 물건을 받아들고 매장에 진열을 하는데.
 // 진열하는 칸이 있으면 진열하고 결과값은 true,
 // 진열하는 칸이 없어서 진열을 못하면 false
@@ -48,7 +48,6 @@ const worker = (goodsNm: string): boolean => {
         {floor: 1, goods: ["milk", "snack"]},
     ];
 
-
     for (let i = 0; i < emart.length; i++) {
         emart[i].goods.map((value) => {
             if (value === goodsNm) {
@@ -56,7 +55,5 @@ const worker = (goodsNm: string): boolean => {
         })
 
     }
-
-
 }
 
