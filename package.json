@@ -12,6 +12,7 @@
   "scripts": {
     "loop": "ts-node ./utils/stdio/practice.ts",
     "stdio": "ts-node ./utils/stdio/stdio.ts",
-    "promise": "ts-node ./grammar/promise/promise.ts"
+    "promise": "ts-node ./grammar/promise/promise.ts",
+    "tae": "ts-node ./grammar/function/taeCallback.ts"
   }
 }
