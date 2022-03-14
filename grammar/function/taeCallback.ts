@@ -6,7 +6,14 @@
 
 import {getInputValue} from "../../utils/stdio/stdio";
 
-const emart = [
+type Emart = EmartFloor[]
+
+type EmartFloor = {
+    floor: number,
+    goods: string[]
+};
+
+const emart: Emart = [
     {floor: 3, goods: ["computer", "game", "electronic"]},
     {floor: 2, goods: ["cloth", "socks"]},
     {floor: 1, goods: ["milk", "snack"]}
