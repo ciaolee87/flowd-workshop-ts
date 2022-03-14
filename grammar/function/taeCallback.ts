@@ -38,7 +38,21 @@ export class taeEmart {
     startEmart(): void {
         console.log("이마트 진열을 시작합니다.");
         console.log(`현재 준비된 진열대는 다음과 같습니다.`);
-        console.log(`Computer, Game, Electronics, Cloth, Socks, Milk, Snack`);
+
+        let items: string = ""
+        for (let i = 0; i < emart.length ; i++) {
+            let floor = emart[i];
+            for (let j = 0; j < floor.goods.length; j++) {
+                let item = floor.goods[j];
+                if (i === emart.length - 1 && j === floor.goods.length - 1) {
+                    items += item;
+                } else {
+                    items += item + ", ";
+                }
+            }
+        }
+
+        console.log(items);
     };
 
     async askQuit(): Promise<boolean> {
