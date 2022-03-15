@@ -1,6 +1,6 @@
 // 1단계
 
-const worker = (goodsNm: string): boolean => {
+const worker1 = (goodsNm: string): boolean => {
     const emart = [
         {floor: 3, goods: ["computer", "game", "electronic"]},
         {floor: 2, goods: ["cloth", "sock"]},
@@ -20,7 +20,9 @@ const worker = (goodsNm: string): boolean => {
 
 
 // 1 단계의 단점. 물건 이름이 나올 때마다 모든 층을 돌면서 진열대를 확인해야 한다.
-// 이 워커는 지정된 이마트밖에 못찾는다. 이마트를 바꿀수도 있다.
+// 이 워커는 지정된 이마트밖에 못찾는다.
+// 이 워커는 딱 이 일 밖에 못한다. -> 확장 가능한지? 한번만 교육 시켜서 여기저기 보내서 쓰고 싶을때?
+// 이마트를 바꿀수도 있다, 리스트도 계속 바뀐다. => 상수가 아닌 변수로 생각해서 바꿔보자.
 
 // 즉, 물건을 빨리 찾는 방법을 찾으면 된다.
 // 여러가지 해결법중에 한가지로 생각해보자
@@ -55,8 +57,8 @@ const makeList = (): GetFloorFromList => {
 
 
 // 워커는 층을 알려주는 기계로 한층한층 찾아보는것을 안해도 됨 => 이제 머신만 업그레드 하면 더 빨라질수 있음
-const workder = (goodsNm: string, getFloorMachine: GetFloorFromList): boolean => {
-    if (getFloorMachine(goodsNm) !== -1) {
+const workder2 = (goodsNm: string, getFloorFromMachine: GetFloorFromList): boolean => {
+    if (getFloorFromMachine(goodsNm) !== -1) {
         return true;
     } else {
         return false;
