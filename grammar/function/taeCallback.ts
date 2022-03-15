@@ -51,13 +51,11 @@ export class taeEmart {
             let floor = emart[i];
             for (let j = 0; j < floor.goods.length; j++) {
                 let item = floor.goods[j];
-                if (i === emart.length - 1 && j === floor.goods.length - 1) {
-                    items += item;
-                } else {
-                    items += item + ", ";
-                }
+                items += item + ", ";
             }
+
         }
+
 
         console.log(items);
     };
@@ -65,6 +63,8 @@ export class taeEmart {
     async askQuit(): Promise<boolean> {
         console.log("진열대 찾기가 종료되었습니다. 프로그램을 종료하시겠습니까? (Y/N)");
         const input = await getInputValue("명령어");
+
+        console.log(input);
 
         switch (input.toLocaleLowerCase().replace(/\r\n/g,"")) {
             case "y":
