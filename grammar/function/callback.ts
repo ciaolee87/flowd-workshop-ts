@@ -72,6 +72,12 @@
 // i값이 없다... => i값을 알아야 할땐 반드시 단순 객체 순환 이라고 하더래도 fori 써야 한다.
 
 
+// ### 매우중요!!!!!!!
+// 중요!! 모든 디자인 패턴 -> 기능 -> 함수 (또는 메소드를 포함하는 객체)
+// 뭔가 실행하는 시점을 정하는것, 논리적으로 정확하게.!!
+// 실행(기능)의 논리적 실행의 시각 순서를 거짓(에러) 없이 정하는 대표적인 패턴
+
+
 // 이마트 직원 (물건 가져다 놓은 일) 을 하는걸 코드
 // 워커가 물건을 받아들고 매장에 진열을 하는데.
 // 진열하는 칸이 있으면 진열하고 결과값은 true,
@@ -194,12 +200,24 @@ const getName1dot1 = (nm: string): string => {
 
 
 // 오일 1개당 튀김이 2개씩 나와.
-const fryier = (oil: number): number => {
-    //...
+type Litter = number;
+type FriedChicken = number;
 
-    //
+type FrierSkill = (oil: Litter) => FriedChicken;
+
+// const fryier: FrierSkill = (oil: number): number => {
+//     //...
+//
+//     //
+//     return oil * 2;
+// }
+
+
+const frier: FrierSkill = oil => {
+    // 튀김기술
     return oil * 2;
 }
+
 
 // 모든조건은 놔두고
 // 오일을 넣을때 오일을 한번 채망에 거른다. 만 추가하고 싶어
@@ -207,37 +225,40 @@ const fryier = (oil: number): number => {
 // -> 기존에 들어가는 입력값, 출력값은 고정 (즉 바뀌지 않아)
 // -> 뭘해도 기존 틀을 깨면 안되.
 
-const fryierJob2 = (oil: number): number => {
+const fryierJob2: FrierSkill = (oil: Litter): FriedChicken => {
     oil = oil * 0.9; // 채망에 오일을 거른다. -> 오일양이 줄어든다.
-    return fryier(oil);
+    return frier(oil);
 }
 
 
 // 튀김이 튀겨지고, 자르고 셋팅을 하면 조금 줄어들어
 
-const fryierJob3 = (oil: number, salt: number): number => {
+const fryierJob3 = (oil: Litter, salt: number): FriedChicken => {
     oil = oil * 0.9 + salt; // 채망에 오일을 거른다. -> 오일양이 줄어든다.
-    let result = fryier(oil);
+    let result = frier(oil);
     result = result * 0.8;
     return result;
 }
 
-const friterJob4 = (salt: number): ((oil: number) => number) => {
+const friterJob4 = (salt: number): FrierSkill => {
     return oil => {
         oil = oil * 0.9 + salt; // 채망에 오일을 거른다. -> 오일양이 줄어든다.
-        let result = fryier(oil);
+        let result = frier(oil);
         result = result * 0.8;
         return result;
     }
 }
 
 
-const chickenWorker = (fryerSkill: (oil: number) => number): number => {
+const chickenWorker = (fryerSkill: FrierSkill): FriedChicken => {
     const oil = 10;
     return fryerSkill(oil);
 }
 
 
-chickenWorker(fryier);
-chickenWorker(fryierJob3);
+chickenWorker(oil => {
+    return oil * 2;
+});
+chickenWorker(frier);
+// chickenWorker(fryierJob3); // <- 안됨.
 chickenWorker(friterJob4(4));
