@@ -29,6 +29,24 @@ const practice = [1, 2, 3, 4, 5];
 
 
 // 1. map 함수 구현
+// 맵이라는 함수를 만들려는 동기 (다른곳에서 필요하니까!!) : 배열 입력 후 내가 정한 특정 가공법을 통해서 입력된 배열이 가공이 되어 새로운 배열이 생성되어 리턴된다.
+// 배열과 내가 정한 특정 가공법을 입력 후/ 을 통해서 입력된 배열이 가공이 되어 / 새로운 배열이 생성되어 리턴된다.
+
+
+const mapTeacher = <T, R>(array: T[], callBack: (value: T, index: number, array: T[]) => R): R[] => {
+    let list: R[] = [];
+
+    const copied = JSON.parse(JSON.stringify(array));
+
+    for (let i = 0; i < array.length; i++) {
+        const elem = JSON.parse(JSON.stringify(array[i]));
+        list = [...list, callBack(elem, i, array)];
+    }
+
+    return list;
+};
+
+
 const map = <T, R>(array: T[], callBack: (value: T, index: number, array: T[]) => R): R[] => {
     let result: R[] = [];
     for (let i = 0; i < array.length; i++) {
